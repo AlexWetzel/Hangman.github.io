@@ -7,19 +7,55 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
-	<h1>Hangman</h1>
 
-	<p id="message"></p><br>
+	<header>
+		<h1>
+██╗  ██╗ █████╗  ██████╗██╗  ██╗███████╗██████╗ ███╗   ███╗ █████╗ ███╗   ██╗
+██║  ██║██╔══██╗██╔════╝██║ ██╔╝██╔════╝██╔══██╗████╗ ████║██╔══██╗████╗  ██║
+███████║███████║██║     █████╔╝ █████╗  ██████╔╝██╔████╔██║███████║██╔██╗ ██║
+██╔══██║██╔══██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗██║╚██╔╝██║██╔══██║██║╚██╗██║
+██║  ██║██║  ██║╚██████╗██║  ██╗███████╗██║  ██║██║ ╚═╝ ██║██║  ██║██║ ╚████║
+╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
+		</h1>
+	</header>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 jumbotron">
+				<p id="round">Running hackerMan.exe...</p>
+				<p id="letters">Hacking all IPs</p>
 
-	<p id="letters">**********</p><br>
+				<p>========================</p>
 
-	<p>Letters Guessed:</p>
-	<p id="guess"></p>
-	<p id="tally"></p>
+				<p id="message">Press any key to BEGIN HACKING</p>
+				
 
-	<p>Round <div id="round"></div></p>
+				<!-- <p>Letters Guessed:</p>
+				<p id="guess"></p>
+				<p id="tally"></p> -->
+
+				
+			</div>
+			<div class="col-xs-6 col-md-4 box">
+
+				<!-- <p id="tally"></p> -->
+				
+				<p id="guesses">Guesses Remaining: -;</p>
+				<p id="wins">IPs hacked: -;</p>
+				<p id="losses">Failed hacks: -;</p>
+
+			</div>
+			<div class="col-xs-6 col-md-4 box">
+				<p>Wrong Characters:</p>
+				
+				<p id="guess"></p>
+			</div>
+			
+		</div>
+	</div>
 
 
 	<script src="assets/javascript/game.js"></script>

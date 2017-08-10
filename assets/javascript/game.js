@@ -6,7 +6,6 @@ function fragmentWords(){
 			var letter = wordList[i].charAt(j);
 			words[i].push(letter);
 		}
-		console.log(words[i]);
 	}
 }
 
@@ -29,7 +28,7 @@ function randomSort() {
 function makeBlank(length){
 	var blank = [];
 	for (var i = 0; i < length; i++) {
-		blank.push("_");
+		blank.push("*");
 	}
 	return blank;
 }
@@ -63,13 +62,16 @@ var pile = [];
 var board = [];
 
 var wordList = [
-	"red",
-	"orange",
-	"yellow",
-	"green",
-	"blue",
-	"indigo",
-	"violet"
+	"password",	"123456",  "12345678", "1234",      "dragon",	"qwerty",   "12345",    "pussy",	"baseball",	"football",
+	"letmein",  "monkey",  "696969",   "abc123",    "mustang",	"micheal",  "shadow",   "master",   "jennifer", "111111",
+	"2000",	    "jordan",  "superman", "harley",	"1234567",  "fuckme",   "hunter",   "fuckyou",  "trustno1", "ranger",
+	"buster",   "thomas",  "tigger",   "robert",	"soccer",   "fuck",     "batman",	"test",	    "pass",	    "killer",
+	"hockey",   "george",  "charlie",  "andrew",    "michelle", "love",     "sunshine", "jessica",	"asshole",  "6969",
+	"pepper",   "daniel",  "access",   "123456789", "654321",   "joshua",   "maggie",   "starwars", "silver",   "william",
+	"dallas",   "yankees", "123123",   "ashley",    "666666",   "hello",	"amanda",   "orange",	"biteme",   "freedom",
+	"computer",	"sexy",    "thunder",  "nicole",    "ginger",   "heather",  "hammer",	"summer",   "corvette", "taylor",
+	"fucker",   "austin",  "1111",	   "merlin",    "matthew",  "121212",   "golfer",   "cheese",   "princess", "martin",
+	"chelsea",  "patrick", "richard",  "diamond",   "yellow",   "bigdog",	"secret",   "asdfgh",   "sparky",   "cowboy"
 ];
 
 //Empty array for storing "fragmented" words
@@ -79,39 +81,32 @@ var words = [];
 //The program chooses the first word in the list, and the board is filled with underscores to show blank spaces.
 fragmentWords();
 randomSort(words);
-// var board = makeBlank(words[round-1].length);
-// document.getElementById("letters").innerHTML = board.join(" ");
 
-//The user inputs a key, the game checks if the letter is in the selected word.
 
-	console.log("Round: "+ round +"; Turn: " + turn + "; win: " + win + "; Loss: " + loss)
-	console.log("Pile:" + pile);
-	console.log("Guesses: " + guess);
-	console.log(words[round-1]);
 
-document.getElementById("round").innerHTML = round;
-document.getElementById("message").innerHTML = "Press any key to start!"
-
+console.log("Round: "+ round +"; Turn: " + turn + "; win: " + win + "; Loss: " + loss)
+console.log("Pile:" + pile);
+console.log("Guesses: " + guess);
 
 document.onkeyup = function(event) {
 
-	document.getElementById("message").innerHTML = " ";
+	document.getElementById("message").innerHTML = "Assuming direct control";
 
+	//This acts as a break to set up the next round
 	if (stop === 1) {
 		stop = 0;
 		turn = 10;
 		round = nextRound(round);
 		document.getElementById("letters").innerHTML = board.join(" ");
 		document.getElementById("guess").innerHTML = pile;		
-	}
+	}	
 	else {
-		var letter = event.key;
+		//The user inputs a key, the game checks if the letter is in the selected word.
 
-		// var check = checkIndex(words[round-1], letter);
+		var letter = event.key;
 
 		//Check if the user repeats a guess
 		if (guess.indexOf(letter) === -1) {
-
 			guess.push(letter);
 
 			//If the letter is not in the word, the board stays the same, the guessed letter goes in the pile, and the number of turns goes down by 1.
@@ -124,9 +119,7 @@ document.onkeyup = function(event) {
 
 				//A bad guess will never result in a win, so the game checks the number of turns to decide whether to end the round.
 				if (turn <= 0){
-					document.getElementById("message").innerHTML = "Game Over";			
-					// round = nextRound(round);
-					// turn = 10;
+					document.getElementById("message").innerHTML = "ACCOUNT LOCKED";			
 					loss++;
 					stop = 1;
 				}
@@ -138,10 +131,8 @@ document.onkeyup = function(event) {
 				fillBoard(words[round-1], letter);
 
 				//Once the blank spaces are filled in (if no underscores are detected), the user wins that wound, increasing their win count by 1.
-				if (board.indexOf("_") === -1){
-					document.getElementById("message").innerHTML = "You Win!";
-					// round = nextRound(round);
-					// turn = 10;
+				if (board.indexOf("*") === -1){
+					document.getElementById("message").innerHTML = "I'm in!";
 					win++;
 					stop = 1;	
 				}
@@ -153,9 +144,12 @@ document.onkeyup = function(event) {
 			document.getElementById("message").innerHTML = "You already guessed that";
 		}
 	}
-	document.getElementById("letters").innerHTML = board.join(" ");
-
-	document.getElementById("tally").innerHTML = "Wins:" + win + "    Losses: " + loss + "      Guesses Remaining: " + turn;
+	document.getElementById("letters").innerHTML = "Password: " + board.join("");
+	document.getElementById("guesses").innerHTML = "Guesses Remaining: " + turn + ";";
+	document.getElementById("wins").innerHTML = "IPs hacked: " + win + ";";
+	document.getElementById("losses").innerHTML = "Failed hacks: " + loss + ";";
+	document.getElementById("round").innerHTML = "User Number: " + round;
+	// document.getElementById("tally").innerHTML = "Wins:" + win + "    Losses: " + loss + "      Guesses Remaining: " + turn;
 
 	console.log("Round: "+ round +"; Turn: " + turn + "; win: " + win + "; Loss: " + loss)
 	console.log("Pile:" + pile);
