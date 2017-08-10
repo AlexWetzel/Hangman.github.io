@@ -18,7 +18,6 @@ function nextRound(round){
 	return round;
 }
 
-
 //The word list is sorted into a random order
 function randomSort() {
     words.sort(function(a, b){return 0.5 - Math.random()});
@@ -31,11 +30,6 @@ function makeBlank(length){
 		blank.push("*");
 	}
 	return blank;
-}
-
-//The pressed key is checked to see if it is in the word
-function checkIndex(arr, val){
-	return arr.indexOf(val);
 }
 
 //This will get every instance of the selected letter and fill the letter in its corresponding position
@@ -154,10 +148,8 @@ document.onkeyup = function(event) {
 	console.log("Round: "+ round +"; Turn: " + turn + "; win: " + win + "; Loss: " + loss)
 	console.log("Pile:" + pile);
 	console.log("Guesses:" + guess);
-	console.log(words[round-1]);
-	
+	console.log(words[round-1]);	
 }
-
 
 //At the start of the next round, the next word is chosen, and the bord is made blank again.
 //The turn count is reset to 10, and the round number goes up by 1. 
