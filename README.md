@@ -1,6 +1,8 @@
-# Hangman.github.io
+# HACKERMAN
  
  link: https://alexwetzel.github.io/Hangman.github.io/
+
+ Note: This app uses some ASCII, which will not display correctly on small screens.
 
  This is my hacker-themed hangman style game: HACKERMAN
 
